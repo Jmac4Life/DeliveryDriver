@@ -9,7 +9,7 @@ public class Driver : MonoBehaviour
     [SerializeField] float fltMoveSpeed = 0.01f;
 
     // Start is called before the first frame update
-    void Start()
+    void Start()    
     {
         
     }
@@ -17,8 +17,8 @@ public class Driver : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float fltSteerAmount = Input.GetAxis("Horizontal") * fltSteerSpeed;
-        float fltMoveAmount = Input.GetAxis("Vertical") * fltMoveSpeed;
+        float fltSteerAmount = UnityEngine.Input.GetAxis("Horizontal") * fltSteerSpeed;
+        float fltMoveAmount = UnityEngine.Input.GetAxis("Vertical") * fltMoveSpeed;
         transform.Rotate(0, 0, -fltSteerAmount);
         transform.Translate(0, fltMoveAmount, 0);
     }
