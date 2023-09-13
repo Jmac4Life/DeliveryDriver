@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Delivery : MonoBehaviour
 {
-    bool boolhasPackage;
+    [SerializeField] float fltDestoryDelay = 0.5f;
+    bool boolHasPackage;
 
     void OnCollisionEnter2D(Collision2D other) 
     {
@@ -18,16 +19,17 @@ public class Delivery : MonoBehaviour
         // if (the thing we trigger is the package)
         // The print "package picked up" to the console
 
-        if (other.tag == "Package") 
+        if (other.tag == "Package" && !boolHasPackage) 
         {
             Debug.Log("Package picked up");
-            boolhasPackage = true;
+            boolHasPackage = true;
+            Destroy(other.gameObject, fltDestoryDelay);
         }
 
-        if (other.tag == "Customer" && boolhasPackage) 
+        if (other.tag == "Customer" && boolHasPackage) 
         {
             Debug.Log("Package Delivered");
-            boolhasPackage = false;
+            boolHasPackage = false;
         }
 
 
